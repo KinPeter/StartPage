@@ -1,9 +1,9 @@
 # Chrome StartPage
 I got a bit bored of always looking for my favorite bookmarks and of going to different sites to take notes or search for something, so I created an all-in-one startpage for myself.
 
-    ![Screenshot](/screenshot.jpg)
+![Screenshot](/screenshot.jpg)
 
-###Functionalities:
+### Functionalities:
 - **"Welcoming"**:
     - stores the users name in local storage
     - gets the current location (city) by IP address
