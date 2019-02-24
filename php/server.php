@@ -36,13 +36,13 @@ if (array_key_exists("method", $_POST)) {
     $method = $_POST['method'];
     //add a new row
     if ($method === 'insert') {
-        $query = 'INSERT INTO links (category, name, link) VALUES ("' . $_POST['category'] . '", "' . $_POST['name'] . '", "' . $_POST['link'] . '")';
+        $query = 'INSERT INTO tiles (category, name, link, icon, priority) VALUES ("' . $_POST['category'] . '", "' . $_POST['name'] . '", "' . $_POST['link'] . '", "' . $_POST['icon'] . '", "' . $_POST['prio'] . '")';
     //update an existing row
     } else if ($method === 'update') {
-        $query = 'UPDATE links SET category = "' . $_POST['category'] . '", name = "' . $_POST['name'] . '", link = "' . $_POST['link'] . '" WHERE id = ' . $_POST['id'];
+        $query = 'UPDATE tiles SET category = "' . $_POST['category'] . '", name = "' . $_POST['name'] . '", link = "' . $_POST['link'] . '", icon = "' . $_POST['icon'] . '", priority = "' . $_POST['prio'] . '" WHERE id = ' . $_POST['id'];
     //delete a row
     } else if ($method === 'delete') {
-        $query = 'DELETE FROM links WHERE id = ' . $_POST['id'];
+        $query = 'DELETE FROM tiles WHERE id = ' . $_POST['id'];
     };
     //make the query and return result (good or bad :) 
     if (mysqli_query($link, $query)) {
