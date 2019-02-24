@@ -86,6 +86,8 @@ function notesMouseFunctions() {
 
 //function to add or update a note
 function addOrUpdateNote(id, method) {
+    //clear previous message text
+    $('#message-text').html('');
     //get current timestamp
     var time = new Date().getTime();
     //get text from textarea
@@ -104,24 +106,27 @@ function addOrUpdateNote(id, method) {
                 function(response) {
                     if (response == 1) {
                         if (method == 'insert') {
-                            alert('New note has been saved.');
+                            $('#message-text').html('New note has been saved.');
                         } else if (method == 'update') {
-                            alert('Note is updated.');
+                            $('#message-text').html('Note is updated.');
                         } 
                         fetchNotes();
                     } else {
-                        alert('Sorry, something went wrong, please try again later.');
+                        $('#message-text').html('Sorry, something went wrong, please try again later.');
                     }
                 }
             );
         } else {
-            alert('Sorry, the password is incorrect. Please try again!');
+            $('#message-text').html('Sorry, the password is incorrect. Please try again!');
         }
+        $('#message').modal('show');
     });
 }
 
 //function to arhive, activate or delete a note
 function archiveOrDeleteNote(id, method) {
+    //clear previous message text
+    $('#message-text').html('');
     //validate password first
     $.post(`http://ptkin.net/site/php/passvalid.php`, {pass: $('#password').val()}, function(response){
         if (response == 1) {
@@ -134,20 +139,21 @@ function archiveOrDeleteNote(id, method) {
                 function(response) {
                     if (response == 1) {
                         if (method == 'archive') {
-                            alert('Note has been archived.');
+                            $('#message-text').html('Note has been archived.');
                         } else if (method == 'activate') {
-                            alert('Note is changed back to active.');
+                            $('#message-text').html('Note is changed back to active.');
                         } else if (method == 'delete') {
-                            alert('Note has been deleted.');
+                            $('#message-text').html('Note has been deleted.');
                         }
                         fetchNotes();
                     } else {
-                        alert('Sorry, something went wrong, please try again later.');
+                        $('#message-text').html('Sorry, something went wrong, please try again later.');
                     }
                 }
             );
         } else {
-            alert('Sorry, the password is incorrect. Please try again!');
+            $('#message-text').html('Sorry, the password is incorrect. Please try again!');
         }
+        $('#message').modal('show');
     });
 }

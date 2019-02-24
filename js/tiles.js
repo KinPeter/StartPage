@@ -33,7 +33,7 @@ function getTileData(category, dom) {
     $.getJSON(`http://ptkin.net/start/php/server.php?met=all&cat=${category}`, (data) => {
         fillTiles(data, dom);
     }).fail((xhr, status, message) => {
-        dom.html(status + ': ' + message);
+        dom.html('Sorry, something went wrong. ' + status + ': ' + message);
     });
 }
 //fills up the tile divs with the data
