@@ -25,12 +25,27 @@ $('.add-href').on('click', function() {
 function fetchNotes() {
     //show loading text
     $('#notes-list').html('Loading...');
-    //get the data from the API and call the filling function
-    $.getJSON(`http://ptkin.net/start/php/notes.php?met=all`, (data) => {
-        listNotes(data);
-    }).fail((xhr, status, message) => {
-        $('#notes-list').html(status + ': ' + message);
-    });
+
+    //check if there is internet connection
+    if (navigator.onLine) {
+        //get the data from the API and call the filling function
+        $.getJSON(`http://ptkin.net/start/php/notes.php?met=all`, (data) => {
+            listNotes(data);
+            //+ save the current notes to local storage
+            localStorage.setItem('notes', JSON.stringify(data));
+        }).fail((xhr, status, message) => {
+            $('#notes-list').html(status + ': ' + message);
+            //+ load notes from localStorage if exist
+            if (localStorage.getItem('notes')) {
+                listNotes(JSON.parse(localStorage.getItem('notes')));
+            }
+        });
+    } else {
+        //+ load notes from localStorage if exist
+        if (localStorage.getItem('notes')) {
+            listNotes(JSON.parse(localStorage.getItem('notes')));
+        }
+    }
 }
 
 //function to display all notes
