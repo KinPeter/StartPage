@@ -6,7 +6,9 @@
 getLocationByIP(user, $('.welcome'), $('.weather'), getWeather);
 
 //Fill up the notes
-fetchNotes();
+if (user === 'Peter') {
+    fetchNotes();
+}
 
 //Fill up the tile boxes 
 getTileData('top', $('#top-links'));
