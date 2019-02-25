@@ -1,7 +1,7 @@
 /**
  *  NOTES functions
  */
-//event listeners for save button and add link tag button
+//event listeners for save button, add link tag and add line break button
 $('.save').on('click', function(){
     var id = $('#note-textarea').data('id');
     if (id != 0) {
@@ -19,6 +19,10 @@ $('.save').on('click', function(){
 $('.add-href').on('click', function() {
     var text = $('#note-textarea').val();
     $('#note-textarea').val(text + '<a href=\\"http://\\"></a>');
+});
+$('.add-br').on('click', function() {
+    var text = $('#note-textarea').val();
+    $('#note-textarea').val(text + '<br>');
 });
 
 //function to fetch the notes from the database and call the displaying function

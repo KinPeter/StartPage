@@ -212,3 +212,8 @@ textarea::placeholder, #password::placeholder {
     float: right;
     font-size: 1.5rem;
 }
+.add-br {
+    display: inline-block;
+    margin-left: 5px;
+    transform: rotate(90deg);
+}
