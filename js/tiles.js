@@ -1,6 +1,7 @@
 /**
  *  TILES functions
  */
+
 // Mouse functions
 function tileMouseFunctions() {
     var originalBG = $('.tile').css('background-color');
@@ -30,7 +31,7 @@ function getTileData(category, dom) {
     //show loading text
     dom.html('Loading...');
     //get the data from the API and call the filling function
-    $.getJSON(`http://ptkin.net/start/php/server.php?met=all&cat=${category}`, (data) => {
+    $.getJSON(`${domain}/start/php/server.php?met=all&cat=${category}`, (data) => {
         fillTiles(data, dom);
     }).fail((xhr, status, message) => {
         dom.html('Sorry, something went wrong. ' + status + ': ' + message);

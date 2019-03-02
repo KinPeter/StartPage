@@ -1,10 +1,11 @@
 /**
  *  LINK SEARCH functions
  */
+
 //get search results from the database and call the "filling" function
 function searchFromAPI(text) {
     $('#links-status').html('Searching...');
-    $.getJSON(`http://ptkin.net/dbadmin/server/server.php?met=sr&name=${text}`, (data) => {
+    $.getJSON(`${domain}/dbadmin/server/server.php?met=sr&name=${text}`, (data) => {
         console.log(data);
         fillLinksModal(data);
     }).fail((xhr, status, message) => {

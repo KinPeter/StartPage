@@ -1,6 +1,11 @@
 /**
  *  NOTES functions
  */
+
+//Primary domain:
+const domain = "http://p-kin.com"
+// ${domain}
+
 //event listeners for save button, add link tag and add line break button
 $('.save').on('click', function(){
     var id = $('#note-textarea').data('id');
@@ -33,7 +38,7 @@ function fetchNotes() {
     //check if there is internet connection
     if (navigator.onLine) {
         //get the data from the API and call the filling function
-        $.getJSON(`http://ptkin.net/start/php/notes.php?met=all`, (data) => {
+        $.getJSON(`${domain}/start/php/notes.php?met=all`, (data) => {
             listNotes(data);
             //+ save the current notes to local storage
             localStorage.setItem('notes', JSON.stringify(data));
@@ -112,10 +117,10 @@ function addOrUpdateNote(id, method) {
     //get text from textarea
     var text = $('#note-textarea').val();
     //validate password first
-    $.post(`http://ptkin.net/site/php/passvalid.php`, {pass: $('#password').val()}, function(response){
+    $.post(`${domain}/site/php/passvalid.php`, {pass: $('#password').val()}, function(response){
         if (response == 1) {
             //send POST request to server
-            $.post('http://ptkin.net/start/php/notes.php',
+            $.post(`${domain}/start/php/notes.php`,
                 {
                     method: method,
                     id: id,
@@ -147,10 +152,10 @@ function archiveOrDeleteNote(id, method) {
     //clear previous message text
     $('#message-text').html('');
     //validate password first
-    $.post(`http://ptkin.net/site/php/passvalid.php`, {pass: $('#password').val()}, function(response){
+    $.post(`${domain}/site/php/passvalid.php`, {pass: $('#password').val()}, function(response){
         if (response == 1) {
             //send POST request to server
-            $.post('http://ptkin.net/start/php/notes.php',
+            $.post(`${domain}/start/php/notes.php`,
                 {
                     method: method,
                     id: id

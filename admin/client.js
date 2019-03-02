@@ -1,6 +1,10 @@
 const cors = 'https://cors-anywhere.herokuapp.com/';
 // ${cors}
 
+//Primary domain:
+const domain = "http://p-kin.com"
+// ${domain}
+
 /***************************************************************
  * EVENT LISTENERS FOR BUTTONS
  */
@@ -44,10 +48,10 @@ $(document).ready(function() {
             return alert('All fields are mandatory!');
         }
         //first validate password
-        $.post(`http://ptkin.net/site/php/passvalid.php`, {pass: password}, function(response){
+        $.post(`${domain}/site/php/passvalid.php`, {pass: password}, function(response){
             if (response == 1) {
                 //send POST request to server
-                $.post('http://ptkin.net/start/php/server.php',
+                $.post(`${domain}/start/php/server.php`,
                     {
                         method: 'insert',
                         category: category,
@@ -87,10 +91,10 @@ $(document).ready(function() {
         if (!category || !id || !name || !link || !icon || !prio) {
             return alert('All fields are mandatory!');
         }
-        $.post(`http://ptkin.net/site/php/passvalid.php`, {pass: password}, function(response){
+        $.post(`${domain}/site/php/passvalid.php`, {pass: password}, function(response){
             if (response == 1) {
                 //send POST request to server
-                $.post('http://ptkin.net/start/php/server.php',
+                $.post(`${domain}/start/php/server.php`,
                     {
                         method: 'update',
                         category: category,
@@ -127,10 +131,10 @@ $(document).ready(function() {
             return alert('All fields are mandatory!');
         }
         //first validate password
-        $.post(`http://ptkin.net/site/php/passvalid.php`, {pass: password}, function(response){
+        $.post(`${domain}/site/php/passvalid.php`, {pass: password}, function(response){
             if (response == 1) {
                 //send POST request to server
-                $.post('http://ptkin.net/start/php/server.php',
+                $.post(`${domain}/start/php/server.php`,
                     {
                         method: 'delete',
                         category: category,
@@ -159,7 +163,7 @@ $(document).ready(function() {
 
     //DOWNLOAD button
     $('#download-btn').on('click', function() {
-        window.open('http://ptkin.net/start/php/download.php', '_blank');
+        window.open(`${domain}/start/php/download.php`, '_blank');
     });
 });
 
@@ -212,7 +216,7 @@ function clearFields() {
 //get a whole table from the database
 function fillListFromAPI(category) {
     $('#list-table').html('Loading...');
-    $.getJSON(`http://ptkin.net/start/php/server.php?met=all&cat=${category}`, (data) => {
+    $.getJSON(`${domain}/start/php/server.php?met=all&cat=${category}`, (data) => {
         fillTheTable(data);
     }).fail((xhr, status, message) => {
         $('#list-table').html(status + ': ' + message);
@@ -222,7 +226,7 @@ function fillListFromAPI(category) {
 //search from the node API
 // function searchFromAPI(text) {
 //     $('#list-table').html('Loading...');
-//     $.getJSON(`http://ptkin.net/dbadmin/server/server.php?met=sr&name=${text}`, (data) => {
+//     $.getJSON(`${domain}/dbadmin/server/server.php?met=sr&name=${text}`, (data) => {
 //         fillTheTable(data);
 //     }).fail((xhr, status, message) => {
 //         $('#list-table').html(status + ': ' + message);

@@ -34,7 +34,7 @@ function getWeather(loc, dom2) {
     var key = keys.weatherKey; //from separate js file 
     var cors = 'https://cors-anywhere.herokuapp.com/'; //if needed
     dom2.html('<p>Fetching weather data...</p>');
-    $.getJSON(`http://ptkin.net/start/php/weather.php?lat=${loc.lat}&lon=${loc.lon}&key=${key}`, (data) => {
+    $.getJSON(`${domain}/start/php/weather.php?lat=${loc.lat}&lon=${loc.lon}&key=${key}`, (data) => {
         console.log(data);
         showWeather(data, dom2);
     }).fail((xhr, status, message) => {
@@ -83,7 +83,8 @@ function getWindDirection(wBearing) {
 //function to determine wind scale
 function getWindScale(wSpeed) {
     var wScale = '';
-    if      (wSpeed > 1 && wSpeed <= 9) {wScale = 'Light wind';}
+    if      (wSpeed > 1 && wSpeed <= 4) {wScale = 'Light breeze';}
+    else if (wSpeed > 4 && wSpeed <= 9) {wScale = 'Light wind';}
     else if (wSpeed > 9 && wSpeed <= 13) {wScale = 'Moderate wind';}
     else if (wSpeed > 13 && wSpeed <= 19) {wScale = 'Strong wind';}
     else if (wSpeed > 19 && wSpeed <= 24) {wScale = 'Stormy wind';}
