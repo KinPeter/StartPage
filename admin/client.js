@@ -2,7 +2,7 @@ const cors = 'https://cors-anywhere.herokuapp.com/';
 // ${cors}
 
 //Primary domain:
-const domain = "http://p-kin.com"
+const domain = "https://www.p-kin.com"
 // ${domain}
 
 /***************************************************************

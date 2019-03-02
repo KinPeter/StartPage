@@ -3,7 +3,7 @@
  */
 
 //Primary domain:
-const domain = "http://p-kin.com"
+const domain = "https://www.p-kin.com"
 // ${domain}
 
 //event listeners for save button, add link tag and add line break button

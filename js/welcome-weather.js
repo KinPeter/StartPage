@@ -15,7 +15,7 @@ if (!localStorage.name) {
 //starting function to get location by IP address and call the weather functions 
 function getLocationByIP(user, dom1, dom2, callback) {
     dom1.html('<p>Loading location...</p>')
-    $.getJSON('http://ip-api.com/json/', (data) => {
+    $.getJSON('https://ipapi.co/json/', (data) => {
         console.log(data);
         dom1.html(`
             <h1>Hi ${user}!</h1>
@@ -34,7 +34,7 @@ function getWeather(loc, dom2) {
     var key = keys.weatherKey; //from separate js file 
     var cors = 'https://cors-anywhere.herokuapp.com/'; //if needed
     dom2.html('<p>Fetching weather data...</p>');
-    $.getJSON(`${domain}/start/php/weather.php?lat=${loc.lat}&lon=${loc.lon}&key=${key}`, (data) => {
+    $.getJSON(`${domain}/start/php/weather.php?lat=${loc.latitude}&lon=${loc.longitude}&key=${key}`, (data) => {
         console.log(data);
         showWeather(data, dom2);
     }).fail((xhr, status, message) => {
