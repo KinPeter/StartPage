@@ -3,46 +3,70 @@
  */
 //search for a word and call the display function passing the results
 function wordLookup(word) {
-    var exact = [];
-    var partial = [];
-    var i = 0;
-    //look for exact match
-    while (i < hun.length) {
-        if ( word.toLowerCase() == hun[i].toLowerCase() ) {
-            exact.push([hun[i], kor[i]]);
-        } else if ( word.toLowerCase() == kor[i].toLowerCase() ) {
-            exact.push([kor[i], hun[i]]);
+
+    word = word.trim().toLowerCase();
+
+    const preResults = {
+        "exact" : [], 
+        "startsWith" : [], 
+        "partial" : []  
+    };
+
+    for (let i = 0; i < hun.length; i++) {
+
+        //look for exact match        
+        if ( word == hun[i].toLowerCase() ) {
+            preResults.exact.push([hun[i], kor[i]]);
+        } else if ( word == kor[i].toLowerCase() ) {
+            preResults.exact.push([kor[i], hun[i]]);
         }
-        i++;
+    
+        //look for match starting with word
+        else if ( hun[i].toLowerCase().startsWith(word) ) {
+            preResults.startsWith.push([hun[i], kor[i]]);
+        } else if ( kor[i].toLowerCase().startsWith(word) ) {
+            preResults.startsWith.push([kor[i], hun[i]]);
+        }  
+    
+        //look for match including word
+        else if ( hun[i].toLowerCase().includes(word) ) {
+            preResults.partial.push([hun[i], kor[i]]);
+        } else if ( kor[i].toLowerCase().includes(word) ) {
+            preResults.partial.push([kor[i], hun[i]]);
+        }  
     }
-    //look for partial match
-    i = 0;
-    while (i < hun.length) {
-        if ( hun[i].toLowerCase().includes(word.toLowerCase()) && !exact.some(row => row.includes(hun[i])) ) {
-            partial.push([hun[i], kor[i]]);
-        } else if ( kor[i].includes(word.toLowerCase()) && !exact.some(row => row.includes(kor[i])) ) {
-            partial.push([kor[i], hun[i]]);
-        }
-        i++;               
-    }
-    dictResults(exact, partial);
+
+    combineResults(preResults);
+    // return preResults;
 }
 
+function combineResults(preResults) {
+    // finalize results array
+    const results = [];
+
+    preResults.exact.forEach((pair) => {
+        results.push(pair);
+    });
+    preResults.startsWith.forEach((pair) => {
+        results.push(pair);
+    });
+    preResults.partial.forEach((pair) => {
+        results.push(pair);
+    });
+
+    dictResults(results);
+    // return results;
+}
+
+
 //display the results
-function dictResults(exact, partial) {
+function dictResults(results) {
     //clear results table
     $('#results-table').html('');
     //clear input field
     $('#korean-search').val('');
     //fill up the list
-    exact.forEach((pair) => {
-        $('#results-table').append(`
-        <tr>
-            <th scope="row">${pair[0]} = ${pair[1]}</th>
-        </tr>
-        `);
-    });
-    partial.forEach((pair) => {
+    results.forEach((pair) => {
         $('#results-table').append(`
         <tr>
             <th scope="row">${pair[0]} = ${pair[1]}</th>
@@ -50,5 +74,5 @@ function dictResults(exact, partial) {
         `);
     });
     //show the results modal
-    $('#modal').modal('show');
+    // $('#modal').modal('show');
 }
