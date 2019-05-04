@@ -17,9 +17,12 @@ I got a bit bored of always looking for my favorite bookmarks and of going to di
     - scrollable tile boxes for different categories
     - cool hover effects for the tiles
     - links served from a database
-- **Search boxes**:
-    - Google search
+- **Search box options**:
     - search in all my bookmarks (from database)
     - Korean-Hungarian dictionary based on my own word list
+    - Google search
+- **Daily Korean**:   
+    - shows three cards with random Korean words from my word list
+    - cards can be flipped to show Hungarian on mouseover
 
 *I didn't really want to complicate my life with lots of `webkits` so some features I implemented are only working in Chrome. However I only use Chrome so I'm fine with that.*
