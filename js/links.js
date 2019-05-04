@@ -19,7 +19,7 @@ function fillLinksModal(data) {
     //clear results table
     $('#results-table').html('');
     //clear input field
-    $('#links-search').val('');
+    $('#search-input').val('');
     //fill up the list
     data.forEach(link => {
         $('#results-table').append(`

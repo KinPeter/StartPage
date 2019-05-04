@@ -17,26 +17,31 @@ getTileData('google', $('#google-links'));
 getTileData('fun', $('#fun-links'));
 getTileData('others', $('#other-links'));
 
-//Google search
-$('#google-search').focus().keypress(function (e) {
-    var key = e.which;
-    if (key == 13) {window.location = `https://www.google.com/search?q=${$('#google-search').val()}`;}
-}); 
+//Load Daily Korean cards
+loadDailyKorean()
 
-//Links search
-$('#links-search').keypress(function (e) {
-    var key = e.which;
-    if (key == 13) {
-        //initiate search
-        searchFromAPI($('#links-search').val());
-    }
-}); 
 
-//Dictionary search
-$('#korean-search').keypress(function (e) {
-    var key = e.which;
-    if (key == 13) {
-        //initiate search
-        wordLookup($('#korean-search').val());
-    }
-}); 
+//TODO __ DELETE __
+    //Google search
+    // $('#google-search').focus().keypress(function (e) {
+    //     var key = e.which;
+    //     if (key == 13) {window.location = `https://www.google.com/search?q=${$('#google-search').val()}`;}
+    // }); 
+
+    //Links search
+    // $('#links-search').keypress(function (e) {
+    //     var key = e.which;
+    //     if (key == 13) {
+    //         //initiate search
+    //         searchFromAPI($('#links-search').val());
+    //     }
+    // }); 
+
+    //Dictionary search
+    // $('#korean-search').keypress(function (e) {
+    //     var key = e.which;
+    //     if (key == 13) {
+    //         //initiate search
+    //         wordLookup($('#korean-search').val());
+    //     }
+    // }); 

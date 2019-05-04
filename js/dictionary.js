@@ -72,7 +72,7 @@ function showDictResults(results) {
     //clear results table
     $('#results-table').html('');
     //clear input field
-    $('#korean-search').val('');
+    $('#search-input').val('');
     //fill up the list
     results.forEach((pair) => {
         $('#results-table').append(`
