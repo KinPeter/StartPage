@@ -1,6 +1,4 @@
-/**
- *  MAIN JS
- */
+/*@include: ./keys.js, ./welcome-weather.js, ./tiles.js, ./links.js, ./dictionary.js,  ./notes.js, ./search.js, ./daily-korean.js, ./start.js @end*/
 
 //Get user name, location and weather data
 getLocationByIP(user, $('.welcome'), $('.weather'), getWeather);
@@ -19,29 +17,3 @@ getTileData('others', $('#other-links'));
 
 //Load Daily Korean cards
 loadDailyKorean()
-
-
-//TODO __ DELETE __
-    //Google search
-    // $('#google-search').focus().keypress(function (e) {
-    //     var key = e.which;
-    //     if (key == 13) {window.location = `https://www.google.com/search?q=${$('#google-search').val()}`;}
-    // }); 
-
-    //Links search
-    // $('#links-search').keypress(function (e) {
-    //     var key = e.which;
-    //     if (key == 13) {
-    //         //initiate search
-    //         searchFromAPI($('#links-search').val());
-    //     }
-    // }); 
-
-    //Dictionary search
-    // $('#korean-search').keypress(function (e) {
-    //     var key = e.which;
-    //     if (key == 13) {
-    //         //initiate search
-    //         wordLookup($('#korean-search').val());
-    //     }
-    // }); 
