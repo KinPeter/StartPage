@@ -1,4 +1,4 @@
-/*@include: ./keys.js, ./welcome-weather.js, ./tiles.js, ./links.js, ./dictionary.js,  ./notes.js, ./search.js, ./daily-korean.js, ./start.js @end*/
+/*@include: ./keys.js, ./welcome-weather.js, ./tiles.js, ./links.js, ./dictionary.js,  ./notes.js, ./search.js, ./daily-korean.js @end*/
 
 //Get user name, location and weather data
 getLocationByIP(user, $('.welcome'), $('.weather'), getWeather);
@@ -16,4 +16,4 @@ getTileData('fun', $('#fun-links'));
 getTileData('others', $('#other-links'));
 
 //Load Daily Korean cards
-loadDailyKorean()
+// --> loaded only when fetching dictionary is complete (fetchDictFromGoogleSheet())

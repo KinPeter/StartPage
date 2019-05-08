@@ -1,6 +1,32 @@
 /**
  *  DICTIONARY SEARCH functions
  */
+const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vST-KJ2L6WJJLRw9phcMslOIumSFrjPXY9UUnzw3X9Urq1vwRrDoVhlTiGwuPSda8XRJPolPR65XBD7/pub?gid=0&single=true&output=tsv'
+
+const kor = []
+const hun = []
+
+// fetch word lists from Google Sheet published .TSV file
+function fetchDictFromGoogleSheet(url, kor, hun) {
+    $.get(url)
+        .done((result) => {
+            let lines = result.split(/\r\n/)
+            lines.forEach(line => {
+                let pair = line.split(/\t/)
+                kor.push(pair[0])
+                hun.push(pair[1])
+            })
+            // load daily Korean words only if fetching is done
+            loadDailyKorean()
+        })
+        .fail((error) => {
+            alert(error.status + ": Error loading file.")
+            console.log(error)
+        })
+}
+
+fetchDictFromGoogleSheet(url, kor, hun)
+
 //search for a word and call the display function passing the results
 function wordLookup(word) {
 
