@@ -5,7 +5,7 @@
 //get search results from the database and call the "filling" function
 function searchFromAPI(text) {
     $('#links-status').html('Searching...');
-    $.getJSON(`${domain}/dbadmin/server/server.php?met=sr&name=${text}`, (data) => {
+    $.getJSON(`${domain}/dbadmin/server/linkserver.php?met=sr&name=${text}`, (data) => {
         console.log(data);
         fillLinksModal(data);
     }).fail((xhr, status, message) => {
@@ -24,7 +24,7 @@ function fillLinksModal(data) {
     data.forEach(link => {
         $('#results-table').append(`
         <tr>
-            <th scope="row"><a href="${link.link}" target="_blank">${link.name}</a></th>
+            <th scope="row"><a href="${link.link_url}" target="_blank">${link.link_name}</a></th>
         </tr>
         `);
     });
