@@ -1,4 +1,7 @@
-# Chrome StartPage
+# StartPage 1.0
+
+> **This project is not maintained anymore - I replaced it with a brand new Angular app.** The new repo is [here.](https://github.com/KinPeter/StartPage-2)
+
 I got a bit bored of always looking for my favorite bookmarks and of going to different sites to take notes or search for something, so I created an all-in-one startpage for myself.
 
 ![Screenshot](/screenshot.jpg)
